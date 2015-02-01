@@ -15,7 +15,6 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
 	}
 
 
@@ -26,7 +25,13 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+            $user = new User();
+            $user->fname = Input::get('fname');
+            $user->lname = Input::get('lname');
+            $user->email = Input::get('email');
+            $user->phone = Input::get('phone');
+            $user->save();
+            echo json_encode(array('msg' => 'success', 'id' => $user->id));
 	}
 
 
@@ -50,7 +55,6 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
 	}
 
 
@@ -62,7 +66,13 @@ class UserController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+            $user = User::find($id);
+            $user->fname = Input::get('fname');
+            $user->lname = Input::get('lname');
+            $user->email = Input::get('email');
+            $user->phone = Input::get('phone');
+            $user->save();
+            echo json_encode(array('msg' => 'success'));
 	}
 
 
@@ -74,7 +84,8 @@ class UserController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+            User::find($id)->delete();
+            echo json_encode(array('msg' => 'success'));
 	}
 
 

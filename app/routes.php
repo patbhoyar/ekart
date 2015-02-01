@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'UserController@index');
+Route::get('/', 'HomeController@index');
 
 Route::resource('user', 'UserController');
 Route::resource('product', 'ProductController');
